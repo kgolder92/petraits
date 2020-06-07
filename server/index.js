@@ -8,6 +8,7 @@ app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/petraits', (req, res) => {
+  db.getPhotos()
   res.send('hello');
 });
 
