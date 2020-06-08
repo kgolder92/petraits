@@ -3,7 +3,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Form from './Form';
-
+import { Container, Header, Logo } from '../style/App.style';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,11 +36,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Petraits</h1>
-        <h2>Animal Art For Pet Lovers</h2>
+      <Container>
+        <Header>
+          <Logo alt="logo" src="logo.png" />
+          <h1>Petraits</h1>
+        </Header>
+          <h2>Animal Art For Pet Lovers</h2>
+          how it works
         <Form submitForm={this.submitForm} />
-      </div>
+      </Container>
     );
   }
 }

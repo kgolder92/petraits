@@ -6,6 +6,7 @@ import {
   FormWrapper,
   InputFields,
   SearchButton,
+  ImagePreview,
 } from '../style/Form.style';
 
 class Form extends React.Component {
@@ -13,10 +14,10 @@ class Form extends React.Component {
     super(props);
 
     this.state = {
-      name: '',
+      fullName: '',
       email: '',
       petsName: '',
-      photo: {},
+      photo: null,
       notes: '',
       validEmail: false,
       validForm: false,
@@ -34,10 +35,10 @@ class Form extends React.Component {
     const {
       email,
       petsName,
+      fullName,
     } = this.state;
 
-    // const validPhoto = photo.match(/\.(jpg|jpeg|png|tiff)$/);
-    if (this.state.name.length >= 1 && email.length >= 1
+    if (fullName.length >= 1 && email.length >= 4
       && petsName.length >= 1) {
       this.setState({
         validForm: true,
@@ -46,53 +47,40 @@ class Form extends React.Component {
   }
 
   handleFileChange({ target }) {
-    // console.log('hanlde change fired');
-    // console.dir(target.files);
-    this.setState({ photo: target.files[0], validForm: true });
-    console.log('after', typeof this.state.photo  );
-
+    console.log(target.files[0])
+    this.setState({ photo: URL.createObjectURL(target.files[0]), validForm: true });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-
     const { submitForm } = this.props;
-    // const { photo } = this.state;
-    // const validEmail = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-    // const validPhoto = photo.match(/\.(jpg|jpeg|png|tiff)$/);
-    // console.log('before', validPhoto);
 
-    // if (validPhoto !== null) {
-    //   this.setState({ photo: `${this.fileInput.current.files[0].name}`, });
-    // }
     submitForm(this.state);
   }
 
   render() {
     const {
-      name,
+      fullName,
       email,
       petsName,
-      photo,
       notes,
       validForm,
+      photo,
     } = this.state;
-    // console.log(email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i))
-    // console.log(validEmail)
+
     return (
       <Container>
         <FormWrapper>
           <form onSubmit={this.handleSubmit}>
-            <InputFields name="name" value={name} placeholder="Enter full name" onChange={this.handleChange} />
+            <InputFields name="fullName" value={fullName} placeholder="Enter full name" onChange={this.handleChange} />
 
             <InputFields name="petsName" value={petsName} placeholder="Whats your pets name?" onChange={this.handleChange} />
 
             <InputFields name="email" type="email" value={email} placeholder="Enter your email" onChange={this.handleChange} />
 
             <InputFields type="file" onChange={this.handleFileChange} />
-            {/* <UploadPhoto getState={this.getState} /> */}
-
-            <InputFields name="notes" value={notes} placeholder="Notes" onChange={this.handleChange} />
+            <ImagePreview src={photo} />
+            <InputFields name="notes" value={notes} placeholder="Notes" onChange={this.handleChange} style={{ height: "10vh" }} />
 
             <SearchButton type="submit" disabled={!validForm}>submit</SearchButton>
           </form>
