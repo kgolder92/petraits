@@ -1,6 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
+import {
+  Container,
+  FormWrapper,
+  InputFields,
+  SearchButton,
+} from '../style/Form.style';
+
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -9,14 +16,15 @@ class Form extends React.Component {
       name: '',
       email: '',
       petsName: '',
-      photo: '',
+      photo: {},
       notes: '',
       validEmail: false,
       validForm: false,
     };
-
+    this.fileInput = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
   }
 
   handleChange({ target }) {
@@ -26,26 +34,37 @@ class Form extends React.Component {
     const {
       email,
       petsName,
-      photo,
-      notes,
     } = this.state;
-    if (this.state.name.length >= 1 && email.length >= 1 && petsName.length >= 1) {
-      this.setState({ validForm: true });
+
+    // const validPhoto = photo.match(/\.(jpg|jpeg|png|tiff)$/);
+    if (this.state.name.length >= 1 && email.length >= 1
+      && petsName.length >= 1) {
+      this.setState({
+        validForm: true,
+      });
     }
+  }
+
+  handleFileChange({ target }) {
+    // console.log('hanlde change fired');
+    // console.dir(target.files);
+    this.setState({ photo: target.files[0], validForm: true });
+    console.log('after', typeof this.state.photo  );
+
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const { submitForm } = this.props;
-    const { email } = this.state;
-    const validEmail = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
 
-    if (validEmail !== null) {
-      this.setState({ validEmail: true });
-      // if (name.length >= 1 && email.length >= 1 && petsName.length >= 1) {
-      //   this.setState({ validForm: true });
-      // }
-    }
+    const { submitForm } = this.props;
+    // const { photo } = this.state;
+    // const validEmail = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+    // const validPhoto = photo.match(/\.(jpg|jpeg|png|tiff)$/);
+    // console.log('before', validPhoto);
+
+    // if (validPhoto !== null) {
+    //   this.setState({ photo: `${this.fileInput.current.files[0].name}`, });
+    // }
     submitForm(this.state);
   }
 
@@ -61,21 +80,24 @@ class Form extends React.Component {
     // console.log(email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i))
     // console.log(validEmail)
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input name="name" value={name} placeholder="Enter full name" onChange={this.handleChange} />
+      <Container>
+        <FormWrapper>
+          <form onSubmit={this.handleSubmit}>
+            <InputFields name="name" value={name} placeholder="Enter full name" onChange={this.handleChange} />
 
-          <input name="petsName" value={petsName} placeholder="Whats your pets name?" onChange={this.handleChange} />
+            <InputFields name="petsName" value={petsName} placeholder="Whats your pets name?" onChange={this.handleChange} />
 
-          <input name="email" type="email" value={email} placeholder="Enter your email" onChange={this.handleChange} />
+            <InputFields name="email" type="email" value={email} placeholder="Enter your email" onChange={this.handleChange} />
 
-          <input name="photo" value={photo} placeholder="upload photo" onChange={this.handleChange} />
+            <InputFields type="file" onChange={this.handleFileChange} />
+            {/* <UploadPhoto getState={this.getState} /> */}
 
-          <input name="notes" value={notes} placeholder="Notes" onChange={this.handleChange} />
+            <InputFields name="notes" value={notes} placeholder="Notes" onChange={this.handleChange} />
 
-          <button type="submit" disabled={!validForm}>submit</button>
-        </form>
-      </div>
+            <SearchButton type="submit" disabled={!validForm}>submit</SearchButton>
+          </form>
+        </FormWrapper>
+      </Container>
     );
   }
 }

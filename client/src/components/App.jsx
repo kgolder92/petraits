@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Form from './Form';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +37,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h1>Petraits</h1>
+        <h2>Animal Art For Pet Lovers</h2>
         <Form submitForm={this.submitForm} />
       </div>
     );
