@@ -17,9 +17,22 @@ pool.connect((err) => {
 
 const getPhotos = () => {
   console.log('hello');
+  const query = {
+    text: `SELECT * FROM orders.photo, commissions.order_id WHERE orders.id = commissions.order_id`,
+    // Select photo from orders as o join commissions as c on o.id = c.order_id where o.id = [value];
+  }
+
+  pool.query(query)
+    .then((res) => callback(null, res))
+    .catch((err) => callback(err));
+
 };
 
 module.exports = {
   pool,
   getPhotos,
 };
+
+/*
+SELECT orders.photo, commissions.photo FROM orders, commisions WHERE orders.id = commisions.order_id;
+*/
