@@ -1,5 +1,18 @@
 import React from 'react';
 
+import Photo from './Photo';
+import { Container, Wrapper, LittleHeader } from '../style/Gallery.style';
+
+const pics = [
+  {
+    image: "moooo",
+    name: "ke"
+  },
+  {
+    image: "uhggg",
+    name: "kge"
+  },
+];
 class Gallery extends React.Component {
   constructor(props) {
     super(props);
@@ -9,9 +22,13 @@ class Gallery extends React.Component {
 
   render() {
     return (
-      <div>
-        Wellcome to Petraits Gallery
-      </div>
+      <Wrapper>
+        <Container>
+          <LittleHeader>Wellcome to Petraits Gallery</LittleHeader>
+
+          {pics.map((pic) => <Photo pic={pic} key={pic.name} />)}
+        </Container>
+      </Wrapper>
     );
   }
 }

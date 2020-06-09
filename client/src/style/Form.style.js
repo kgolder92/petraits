@@ -6,7 +6,16 @@ export const Container = styled.div`
   width: 50%;
   background-color: #f5f0f0;
   align-items: center;
-  margin-left: 46%;
+  margin-left: 16%;
+  border-radius: 5px;
+`;
+
+export const LeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 31%;
+  align-items: center;
+  border-radius: 5px;
 `;
 
 export const FormWrapper = styled.div`
@@ -30,8 +39,10 @@ width: 34vh;
 `;
 
 export const ImagePreview = styled.img`
-  width: 30vh;
-  height: 38vh;
+  width: auto;
+  height: auto;
+  max-width: 30vh;
+  max-height: 38vh;
 `;
 
 export const SearchButton = styled.button`

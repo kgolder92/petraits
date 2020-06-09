@@ -42,7 +42,7 @@ export const Menu = styled.div`
   width: 100vh;
   justify-content: flex-end;
 `;
-export const Word = styled.a`
+export const Word = styled.div`
  margin-right: 35px;
  text-decoration: none;
 `;

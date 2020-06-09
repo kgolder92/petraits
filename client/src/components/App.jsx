@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Link, } from 'react-router-dom'
 
 import Form from './Form';
 import Gallery from './Gallery';
+import Admin from './Admin';
+
 import { Container, Header, Logo, LineBreak, Menu, Word } from '../style/App.style';
 
 class App extends React.Component {
@@ -17,6 +19,7 @@ class App extends React.Component {
 
     this.submitForm = this.submitForm.bind(this);
     this.getPhotos = this.getPhotos.bind(this);
+    this.submitCompletedPhoto = this.submitCompletedPhoto.bind(this);
   }
 
   componentDidMount() {
@@ -31,7 +34,14 @@ class App extends React.Component {
 
   submitForm(info) {
     console.log('helo');
-    axios.post('/petraits', info)
+    axios.post('/orders', info)
+      .then(() => this.getPhotos)
+      .catch((err) => console.log(err));
+  }
+
+  submitCompletedPhoto(info) {
+    console.log('helo');
+    axios.post('/completedOrders', info)
       .then(() => this.getPhotos)
       .catch((err) => console.log(err));
   }
@@ -44,11 +54,14 @@ class App extends React.Component {
             <Logo alt="logo" src="logo.png" />
             <h1>Petraits</h1>
             <Menu>
-              <Link to="/">
+              <Link to="/" style={{ textDecoration: 'none' }}>
                 <Word>Upload </Word>
               </Link>
-              <Link to="/gallery">
+              <Link to="/gallery" style={{ textDecoration: 'none' }}>
                 <Word> Gallery </Word>
+              </Link>
+              <Link to="/admin" style={{ textDecoration: 'none' }}>
+                <Word> Admin </Word>
               </Link>
             </Menu>
           </Header>
@@ -63,6 +76,9 @@ class App extends React.Component {
             </Route>
             <Route path="/gallery">
               <Gallery />
+            </Route>
+            <Route path="/admin">
+              <Admin submitCompletedPhoto={this.submitCompletedPhoto} />
             </Route>
           </Switch>
 

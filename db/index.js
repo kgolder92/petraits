@@ -15,22 +15,32 @@ pool.connect((err) => {
   else console.log('connected to postgres :)');
 });
 
-const getPhotos = () => {
+const getPhotos = ((callback) => {
   console.log('hello');
   const query = {
-    text: `SELECT * FROM orders.photo, commissions.order_id WHERE orders.id = commissions.order_id`,
+    text: 'SELECT * FROM orders.photo, commissions.order_id WHERE orders.id = commissions.order_id',
     // Select photo from orders as o join commissions as c on o.id = c.order_id where o.id = [value];
-  }
+  };
+  // pool.query(query)
+  //   .then((res) => callback(null, res))
+  //   .catch((err) => callback(err));
+});
+
+const uploadOrder = ((order, callback) => {
+  const query = {
+    text: 'INSERT INTO orders(fullName, petsName, email, photo, notes)',
+    values: [order.fullName, order.petsName, order.email, order.photo, order.notes],
+  };
 
   pool.query(query)
     .then((res) => callback(null, res))
     .catch((err) => callback(err));
-
-};
+});
 
 module.exports = {
   pool,
   getPhotos,
+  uploadOrder,
 };
 
 /*
