@@ -1,4 +1,10 @@
 import styled from 'styled-components';
+import { Upload } from '@styled-icons/feather/Upload';
+
+export const UploadIcon = styled(Upload)`
+  width: 24px;
+  color: rgb(0, 132, 137);
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -27,15 +33,16 @@ export const FormWrapper = styled.div`
 `;
 
 export const InputFields = styled.input`
-width: 34vh;
-    height: 5vh;
-    border: none;
-    display: flex;
-    margin-bottom: 8%;
-    border-radius: 5px;
-    font-family: Ginto,helvetica,"sans-serif";
-    color: #042228;
-    font-size: 17px;
+  width: 31vh;
+  height: 0vh;
+  border: none;
+  display: flex;
+  margin-bottom: 8%;
+  border-radius: 5px;
+  font-family: Ginto,helvetica,"sans-serif";
+  color: #042228;
+  font-size: 17px;
+  padding: 25px;
 `;
 
 export const ImagePreview = styled.img`
@@ -50,4 +57,20 @@ export const SearchButton = styled.button`
   border: none;
   height: 5vh;
   width: 14vh;
+  background-color: white;
+`;
+
+export const UploadButton = styled.button`
+  margin-bottom: 27px;
+  border-radius: 5px;
+  border: none;
+  height: 10vh;
+  width: 37vh;
+  font-family: Ginto,helvetica,"sans-serif";
+  color: rgb(118,118,118);
+  font-size: 17px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 `;

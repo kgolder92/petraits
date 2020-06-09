@@ -28,8 +28,19 @@ const getPhotos = ((callback) => {
 
 const uploadOrder = ((order, callback) => {
   const query = {
-    text: 'INSERT INTO orders(full_name, pet_name, email, photo, notes)',
+    text: 'INSERT INTO orders(full_name, pet_name, email, photo, notes) VALUES ($1, $2, $3, $4, $5)',
     values: [order.fullName, order.petsName, order.email, order.photo, order.notes],
+  };
+
+  pool.query(query)
+    .then((res) => callback(null, res))
+    .catch((err) => callback(err));
+});
+
+const uploadCompletedPetrait = ((order, callback) => {
+  const query = {
+    text: 'INSERT INTO commissions(photo, order_id) VALUES ($1, $2)',
+    values: [order.photo, order.orderid],
   };
 
   pool.query(query)
@@ -41,6 +52,7 @@ module.exports = {
   pool,
   getPhotos,
   uploadOrder,
+  uploadCompletedPetrait,
 };
 
 /*

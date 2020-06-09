@@ -8,6 +8,8 @@ import {
   SearchButton,
   ImagePreview,
   LeftContainer,
+  UploadButton,
+  UploadIcon,
 } from '../style/Form.style';
 
 class Form extends React.Component {
@@ -19,6 +21,7 @@ class Form extends React.Component {
       email: '',
       petsName: '',
       photo: null,
+      photoPreview: null,
       notes: '',
       validEmail: false,
       validForm: false,
@@ -27,6 +30,7 @@ class Form extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -49,7 +53,11 @@ class Form extends React.Component {
 
   handleFileChange({ target }) {
     console.log(target.files[0]);
-    this.setState({ photo: URL.createObjectURL(target.files[0]), validForm: true });
+    this.setState({ photoPreview: URL.createObjectURL(target.files[0]), photo: target.files[0], validForm: true });
+  }
+
+  handleClick(e) {
+    document.getElementById('hiddenFileInput').click();
   }
 
   handleSubmit(e) {
@@ -67,6 +75,7 @@ class Form extends React.Component {
       notes,
       validForm,
       photo,
+      photoPreview,
     } = this.state;
 
     return (
@@ -82,15 +91,20 @@ class Form extends React.Component {
         </LeftContainer>
         <Container>
           <FormWrapper>
-            <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+            <form onSubmit={this.handleSubmit} method="post" encType="multipart/form-data">
               <InputFields name="fullName" value={fullName} placeholder="Enter your name" onChange={this.handleChange} />
 
               <InputFields name="petsName" value={petsName} placeholder="What's your pets name?" onChange={this.handleChange} />
 
               <InputFields name="email" type="email" value={email} placeholder="Enter your email" onChange={this.handleChange} />
 
-              <InputFields type="file" onChange={this.handleFileChange} />
-              <ImagePreview src={photo} />
+              <UploadButton onClick={this.handleClick}>
+                Upload a file
+                <UploadIcon />
+              </UploadButton>
+              <InputFields type="file" id="hiddenFileInput" name="image" style={{ display: 'none' }} onChange={this.handleFileChange} />
+              <ImagePreview src={photoPreview} style={{ borderRadius: '5px' }} />
+
               <InputFields name="notes" value={notes} placeholder="Notes" onChange={this.handleChange} style={{ height: '10vh' }} />
 
               <SearchButton type="submit" disabled={!validForm}>submit</SearchButton>

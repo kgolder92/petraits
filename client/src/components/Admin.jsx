@@ -61,14 +61,14 @@ class Admin extends React.Component {
               <label>
                 Select a current order id:
                 <select value={this.state.orderid} onChange={this.handleChange}>
-                  <option value="grapefruit">Grapefruit</option>
-                  <option value="lime">Lime</option>
-                  <option value="coconut">Coconut</option>
-                  <option value="mango">Mango</option>
+                  <option value="grapefruit">1</option>
+                  <option value="lime">2</option>
+                  <option value="coconut">3</option>
+                  <option value="mango">4</option>
                 </select>
               </label>
 
-              <InputFields type="file" onChange={this.handleFileChange} />
+              <InputFields name="completedimage" type="file" onChange={this.handleFileChange} />
               <ImagePreview src={photo} />
 
               <InputFields name="notes" value={notes} placeholder="Notes" onChange={this.handleChange} style={{ height: '10vh' }} />

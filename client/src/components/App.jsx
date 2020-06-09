@@ -40,7 +40,9 @@ class App extends React.Component {
 
   getPhotos() {
     axios.get('/petraits')
-      .then(({ data }) => this.setState({ gallery: data }))
+      .then(({ data }) => {
+        this.setState({ gallery: data });
+      })
       .catch((err) => console.log(err));
   }
 
@@ -87,7 +89,7 @@ class App extends React.Component {
               <Form submitForm={this.submitForm} />
             </Route>
             <Route path="/gallery">
-              <Gallery />
+              <Gallery gallery={this.state.gallery} />
             </Route>
             <Route path="/admin">
               <Admin submitCompletedPhoto={this.submitCompletedPhoto} />

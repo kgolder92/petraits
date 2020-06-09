@@ -12,12 +12,12 @@ class Photo extends React.Component {
   }
 
   render() {
-    const { pic } = this.props;
+    const { pic, gallery } = this.props;
     return (
-      <Box>
-        <img alt="orginal" src={pic.image} />
-        <img alt="drawing" src={pic.image} />
-      </Box>
+      <div>
+        <img alt="orginal" src="http://localhost:3000/uploads/FullSizeR_20161022_000850_Original.JPG" />
+        <img alt="drawing" src={`http://localhost:3000/uploads/${gallery.photo}`} />
+      </div>
     );
   }
 }

@@ -23,7 +23,7 @@ app.use('/', express.static(path.join(__dirname, '..', 'public')));
 
 const storage = multer.diskStorage({
   destination(req, file, callback) {
-    callback(null, './uploads');
+    callback(null, './public/uploads');
   },
   filename(req, file, callback) {
     callback(null, file.originalname);
@@ -33,36 +33,44 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.get('/petraits', (req, res) => {
-  db.getPhotos();
-  res.send('hello');
+  db.getPhotos((err, results) => {
+    if (err) res.status(500).send(err);
+    else res.send(results.rows[0]);
+  });
 });
 
-/** test
-app.post('/single', upload.single('profile'), (req, res) => {
+
+app.post('/single', upload.single('image'), (req, res) => {
+  console.log(req.file);
   try {
     res.send(req.file);
   } catch (err) {
-    res.status(400).send(err);
+    res.sendStatus(400);
   }
+  // db.uploadOrder(req.file, (err) => {
+  //   if (err) res.status(400).send(err);
+  //   else res.send(req.file);
+  // });
 });
- */
+
 
 app.post('/orders', upload.single('image'), (req, res) => {
-  const file = global.appRoot + '/uploads/' + req.file.filename;
   const order = req.body;
+  order.photo = req.file.filename;
   console.log(order);
-  console.log(req.file);
+  // console.log('file', req.file);
   db.uploadOrder(order, (err, results) => {
     if (err) res.status(500).send(err);
     else res.send(results);
   });
 });
 
-// do i need this?
-app.post('/completedOrders', (req, res) => {
+app.post('/completedOrders', upload.single('completedimage'), (req, res) => {
   const order = req.body;
+  order.photo = req.file.filename;
+
   console.log(order);
-  db.uploadOrder(order, (err, results) => {
+  db.uploadCompletedPetrait(order, (err, results) => {
     if (err) res.status(500).send(err);
     else res.send(results);
   });
