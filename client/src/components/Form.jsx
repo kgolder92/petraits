@@ -47,7 +47,7 @@ class Form extends React.Component {
   }
 
   handleFileChange({ target }) {
-    console.log(target.files[0])
+    console.log(target.files[0]);
     this.setState({ photo: URL.createObjectURL(target.files[0]), validForm: true });
   }
 
@@ -69,23 +69,26 @@ class Form extends React.Component {
     } = this.state;
 
     return (
-      <Container>
-        <FormWrapper>
-          <form onSubmit={this.handleSubmit}>
-            <InputFields name="fullName" value={fullName} placeholder="Enter full name" onChange={this.handleChange} />
+      <div>
+        How it works
+        <Container>
+          <FormWrapper>
+            <form onSubmit={this.handleSubmit}>
+              <InputFields name="fullName" value={fullName} placeholder="Enter your name" onChange={this.handleChange} />
 
-            <InputFields name="petsName" value={petsName} placeholder="Whats your pets name?" onChange={this.handleChange} />
+              <InputFields name="petsName" value={petsName} placeholder="What's your pets name?" onChange={this.handleChange} />
 
-            <InputFields name="email" type="email" value={email} placeholder="Enter your email" onChange={this.handleChange} />
+              <InputFields name="email" type="email" value={email} placeholder="Enter your email" onChange={this.handleChange} />
 
-            <InputFields type="file" onChange={this.handleFileChange} />
-            <ImagePreview src={photo} />
-            <InputFields name="notes" value={notes} placeholder="Notes" onChange={this.handleChange} style={{ height: "10vh" }} />
+              <InputFields type="file" onChange={this.handleFileChange} />
+              <ImagePreview src={photo} />
+              <InputFields name="notes" value={notes} placeholder="Notes" onChange={this.handleChange} style={{ height: '10vh' }} />
 
-            <SearchButton type="submit" disabled={!validForm}>submit</SearchButton>
-          </form>
-        </FormWrapper>
-      </Container>
+              <SearchButton type="submit" disabled={!validForm}>submit</SearchButton>
+            </form>
+          </FormWrapper>
+        </Container>
+      </div>
     );
   }
 }
