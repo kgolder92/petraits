@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 import { Box } from '../style/Gallery.style';
@@ -14,8 +15,8 @@ class Photo extends React.Component {
     const { pic } = this.props;
     return (
       <Box>
-        <img src={pic.image} />
-        <img src={pic.image} />
+        <img alt="orginal" src={pic.image} />
+        <img alt="drawing" src={pic.image} />
       </Box>
     );
   }

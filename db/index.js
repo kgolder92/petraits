@@ -18,17 +18,17 @@ pool.connect((err) => {
 const getPhotos = ((callback) => {
   console.log('hello');
   const query = {
-    text: 'SELECT * FROM orders.photo, commissions.order_id WHERE orders.id = commissions.order_id',
+    text: 'SELECT orders.photo, commissions.photo FROM orders, commissions WHERE orders.id = commissions.order_id',
     // Select photo from orders as o join commissions as c on o.id = c.order_id where o.id = [value];
   };
-  // pool.query(query)
-  //   .then((res) => callback(null, res))
-  //   .catch((err) => callback(err));
+  pool.query(query)
+    .then((res) => callback(null, res))
+    .catch((err) => callback(err));
 });
 
 const uploadOrder = ((order, callback) => {
   const query = {
-    text: 'INSERT INTO orders(fullName, petsName, email, photo, notes)',
+    text: 'INSERT INTO orders(full_name, pet_name, email, photo, notes)',
     values: [order.fullName, order.petsName, order.email, order.photo, order.notes],
   };
 

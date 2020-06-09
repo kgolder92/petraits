@@ -10,8 +10,7 @@ const app = express();
 app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '..', 'public')));
 
-//multi part
-// const upload = multer({ dest: '../../Hack_Reactor' });
+// multi part
 // const uploadMiddleware = multer({
 //   dest: path.resolve(__dirname, '..', '/uploads/'),
 //   fileFilter: function (req, file, cb) {
@@ -22,22 +21,44 @@ app.use('/', express.static(path.join(__dirname, '..', 'public')));
 //   },
 // }).single('photo');
 
+const storage = multer.diskStorage({
+  destination(req, file, callback) {
+    callback(null, './uploads');
+  },
+  filename(req, file, callback) {
+    callback(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
 app.get('/petraits', (req, res) => {
   db.getPhotos();
   res.send('hello');
 });
-//upload.single('file'),
-app.post('/orders', (req, res) => {
-  // const file = global.appRoot + '/uploads/' + req.file.filename;
+
+/** test
+app.post('/single', upload.single('profile'), (req, res) => {
+  try {
+    res.send(req.file);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+ */
+
+app.post('/orders', upload.single('image'), (req, res) => {
+  const file = global.appRoot + '/uploads/' + req.file.filename;
   const order = req.body;
   console.log(order);
+  console.log(req.file);
   db.uploadOrder(order, (err, results) => {
     if (err) res.status(500).send(err);
     else res.send(results);
   });
 });
 
-//do i need this?
+// do i need this?
 app.post('/completedOrders', (req, res) => {
   const order = req.body;
   console.log(order);

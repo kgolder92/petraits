@@ -5,12 +5,12 @@ import { Container, Wrapper, LittleHeader } from '../style/Gallery.style';
 
 const pics = [
   {
-    image: "moooo",
-    name: "ke"
+    image: 'moooo',
+    name: 'ke',
   },
   {
-    image: "uhggg",
-    name: "kge"
+    image: 'uhggg',
+    name: 'kge',
   },
 ];
 class Gallery extends React.Component {

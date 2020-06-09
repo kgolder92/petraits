@@ -1,13 +1,25 @@
 /* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Switch, Route, Link, } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
 
 import Form from './Form';
 import Gallery from './Gallery';
 import Admin from './Admin';
 
-import { Container, Header, Logo, LineBreak, Menu, Word } from '../style/App.style';
+import {
+  Container,
+  Header,
+  Logo,
+  LineBreak,
+  Menu,
+  Word,
+} from '../style/App.style';
 
 class App extends React.Component {
   constructor(props) {

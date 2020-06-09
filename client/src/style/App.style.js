@@ -28,7 +28,7 @@ export const Header = styled.div`
   font-size: 26px;
   display: flex;
   flex-direction: row;
-
+  margin-top: -2%;
   width: 100%;
   height: 16vh;
   background-color: #f5f0f0;
