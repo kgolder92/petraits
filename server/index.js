@@ -35,7 +35,7 @@ const upload = multer({ storage });
 app.get('/petraits', (req, res) => {
   db.getPhotos((err, results) => {
     if (err) res.status(500).send(err);
-    else res.send(results.rows[0]);
+    else res.send(results.rows);
   });
 });
 

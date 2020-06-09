@@ -19,7 +19,6 @@ const getPhotos = ((callback) => {
   console.log('hello');
   const query = {
     text: 'SELECT orders.photo, commissions.photo FROM orders, commissions WHERE orders.id = commissions.order_id',
-    // Select photo from orders as o join commissions as c on o.id = c.order_id where o.id = [value];
   };
   pool.query(query)
     .then((res) => callback(null, res))

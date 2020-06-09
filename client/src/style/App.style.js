@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Prata', serif;
-
 `;
 
 export const Logo = styled.img`
@@ -18,8 +17,8 @@ export const LineBreak = styled.div`
   border-bottom-width: 1px !important;
   border-bottom-color: #EBEBEB !important;
   border-bottom-style: solid !important;
-  margin-top: 12px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 3px;
 }
 `;
 

@@ -7,6 +7,8 @@ import {
   InputFields,
   SearchButton,
   ImagePreview,
+  UploadButton,
+  UploadIcon,
 } from '../style/Form.style';
 
 class Admin extends React.Component {
@@ -16,6 +18,7 @@ class Admin extends React.Component {
     this.state = {
       orderid: '',
       photo: null,
+      photoPreview: null,
       notes: '',
       validEmail: false,
       validForm: false,
@@ -24,6 +27,7 @@ class Admin extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -32,8 +36,7 @@ class Admin extends React.Component {
   }
 
   handleFileChange({ target }) {
-    console.log(target.files[0]);
-    this.setState({ photo: URL.createObjectURL(target.files[0]), validForm: true });
+    this.setState({ photoPreview: URL.createObjectURL(target.files[0]),  photo: target.files[0], validForm: true });
   }
 
   handleSubmit(e) {
@@ -43,11 +46,18 @@ class Admin extends React.Component {
     submitCompletedPhoto(this.state);
   }
 
+
+  // eslint-disable-next-line class-methods-use-this
+  handleClick(e) {
+    document.getElementById('hiddenFileInput').click();
+  }
+
   render() {
     const {
       notes,
       validForm,
       photo,
+      photoPreview,
     } = this.state;
 
     return (
@@ -68,8 +78,12 @@ class Admin extends React.Component {
                 </select>
               </label>
 
-              <InputFields name="completedimage" type="file" onChange={this.handleFileChange} />
-              <ImagePreview src={photo} />
+              <UploadButton onClick={this.handleClick}>
+                Upload a file
+                <UploadIcon />
+              </UploadButton>
+              <InputFields type="file" id="hiddenFileInput" name="completedimage" style={{ display: 'none' }} onChange={this.handleFileChange} />
+              <ImagePreview src={photoPreview} style={{ borderRadius: '5px' }} />
 
               <InputFields name="notes" value={notes} placeholder="Notes" onChange={this.handleChange} style={{ height: '10vh' }} />
 

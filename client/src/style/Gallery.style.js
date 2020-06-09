@@ -18,6 +18,7 @@ display: flex;
 flex-wrap: wrap;
 width: 50%;
 justify-content: space-evenly;
+display: contents;
 `;
 
 
@@ -27,7 +28,8 @@ border-radius:5px;
 `;
 
 export const LittleHeader = styled.div`
-height: 4vh;
+height: 8vh;
 width: 100%;
-
+font-size: 21px;
+margin-top: 18px;
 `;

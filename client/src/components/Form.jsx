@@ -26,7 +26,7 @@ class Form extends React.Component {
       validEmail: false,
       validForm: false,
     };
-    this.fileInput = React.createRef();
+    // this.fileInput = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
