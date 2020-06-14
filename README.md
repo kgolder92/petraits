@@ -18,5 +18,7 @@ Animal art for pet parents
    `$ git clone https://github.com/kgolder92/petraits.git`
 
 2. Install dependencies with `npm install`
-3. Start with npm start
+
+3. Start with `npm start`
+
 #contributing
