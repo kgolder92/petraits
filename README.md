@@ -1,3 +1,3 @@
-![petraits logo](public/logo.png =250x250)
+![petraits logo 200x200](public/logo.png)
 # Petraits
 Animal art for pet parents
