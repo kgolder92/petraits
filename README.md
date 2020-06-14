@@ -10,9 +10,9 @@ Animal art for pet parents
   <a href="#contributing">Contributing</a>
 </p>
 
-#features
+#Features
 
-#installation
+#Installation
 1. Clone this repository from your terminal
 
    `$ git clone https://github.com/kgolder92/petraits.git`
@@ -21,4 +21,4 @@ Animal art for pet parents
 
 3. Start with `npm start`
 
-#contributing
+#Contributing
