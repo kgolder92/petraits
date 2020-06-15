@@ -1,9 +1,14 @@
 <h1> 
-  <img src="public/logo.png" alt="petraits" width="150">
-  <h1>Petraits</h1>
+  <img src="https://i.imgur.com/8tZXVi4.png" alt="petraits" width="550">
 </h1>
 Animal art for pet parents. 
 This application is for pet lovers who want to make artwork from their pets photos
+
+<p align="center">
+  <a href="#How it works">How it works</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#contributing">Contributing</a>
+</p>
 
 # How it works
 ### User
@@ -13,12 +18,6 @@ This application is for pet lovers who want to make artwork from their pets phot
 ### Admin
 1. Admin will recieve a notification 
 2. Complete the drawing and then upload drawing with original photo to gallery and send it to user with an attatchment to downlaod
-
-
-<p align="center">
-  <a href="#installation">Installation</a> •
-  <a href="#contributing">Contributing</a>
-</p>
 
 # Installation
 1. Clone this repository from your terminal
