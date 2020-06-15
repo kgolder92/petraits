@@ -1,4 +1,4 @@
-<h1> 
+<h1 align="center"> 
   <img src="https://i.imgur.com/8tZXVi4.png" alt="petraits" width="550">
 </h1>
 Animal art for pet parents. 
