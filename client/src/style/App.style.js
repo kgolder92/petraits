@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Prata', serif;
-
 `;
 
 export const Logo = styled.img`
@@ -18,8 +17,8 @@ export const LineBreak = styled.div`
   border-bottom-width: 1px !important;
   border-bottom-color: #EBEBEB !important;
   border-bottom-style: solid !important;
-  margin-top: 12px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 3px;
 }
 `;
 
@@ -28,7 +27,7 @@ export const Header = styled.div`
   font-size: 26px;
   display: flex;
   flex-direction: row;
-
+  margin-top: -2%;
   width: 100%;
   height: 16vh;
   background-color: #f5f0f0;
@@ -42,7 +41,7 @@ export const Menu = styled.div`
   width: 100vh;
   justify-content: flex-end;
 `;
-export const Word = styled.a`
+export const Word = styled.div`
  margin-right: 35px;
  text-decoration: none;
 `;
