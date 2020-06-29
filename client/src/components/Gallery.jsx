@@ -49,11 +49,11 @@ class Gallery extends React.Component {
             <Picture alt="drawing" src="http://localhost:3000/uploads/IMG_0016.JPG" />
           </Order>
 
-          {/* <Order>
+          <Order>
             <Picture alt="orginal" src="http://localhost:3000/uploads/IMG_0505.JPEG" />
-            <div>Pug</div>
+            <div>Rambo</div>
             <Picture alt="drawing" src="http://localhost:3000/uploads/IMG_0505.PNG" />
-          </Order> */}
+          </Order>
         </Container>
       </Wrapper>
     );

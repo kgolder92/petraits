@@ -36,7 +36,7 @@ class Admin extends React.Component {
   }
 
   handleFileChange({ target }) {
-    this.setState({ photoPreview: URL.createObjectURL(target.files[0]),  photo: target.files[0], validForm: true });
+    this.setState({ photoPreview: URL.createObjectURL(target.files[0]), photo: target.files[0], validForm: true });
   }
 
   handleSubmit(e) {
@@ -58,6 +58,7 @@ class Admin extends React.Component {
       validForm,
       photo,
       photoPreview,
+      orderid,
     } = this.state;
 
     return (
@@ -70,7 +71,7 @@ class Admin extends React.Component {
               {/* <InputFields name="orderId" type="email" value={email} placeholder="Enter order id" onChange={this.handleChange} /> */}
               <label>
                 Select a current order id:
-                <select value={this.state.orderid} onChange={this.handleChange}>
+                <select value={orderid} onChange={this.handleChange}>
                   <option value="grapefruit">1</option>
                   <option value="lime">2</option>
                   <option value="coconut">3</option>
