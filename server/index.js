@@ -21,6 +21,8 @@ app.use('/', express.static(path.join(__dirname, '..', 'public')));
 //   },
 // }).single('photo');
 
+/* storage variable where the destination folder being used
+  and providing a filename for the file being uploade */
 const storage = multer.diskStorage({
   destination(req, file, callback) {
     callback(null, './public/uploads');
@@ -30,7 +32,18 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb('type of file is not supported', false);
+  }
+};
+
+const upload = multer({
+  storage,
+  fileFilter,
+});
 
 app.get('/petraits', (req, res) => {
   db.getPhotos((err, results) => {
@@ -42,6 +55,7 @@ app.get('/petraits', (req, res) => {
 
 app.post('/single', upload.single('image'), (req, res) => {
   console.log(req.file);
+
   try {
     res.send(req.file);
   } catch (err) {
@@ -56,8 +70,8 @@ app.post('/single', upload.single('image'), (req, res) => {
 
 app.post('/orders', upload.single('image'), (req, res) => {
   const order = req.body;
+  console.log(req.body)
   order.photo = req.file.filename;
-  console.log(order);
   // console.log('file', req.file);
   db.uploadOrder(order, (err, results) => {
     if (err) res.status(500).send(err);
@@ -69,7 +83,9 @@ app.post('/completedOrders', upload.single('completedimage'), (req, res) => {
   const order = req.body;
   order.photo = req.file.filename;
 
-  console.log(order);
+  // console.log(order);
+  console.log(req.body.imageName);
+
   db.uploadCompletedPetrait(order, (err, results) => {
     if (err) res.status(500).send(err);
     else res.send(results);
