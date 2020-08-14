@@ -17,7 +17,7 @@ This application is for pet lovers who want to make artwork from their pets phot
 
 ### Admin
 1. Admin will recieve a notification 
-2. Complete the drawing and then upload drawing with original photo to gallery and send it to user with an attatchment to download
+2. Complete the drawing and then upload it with the original photo to gallery and send it to user with an attatchment to download
 
 # Installation
 1. Clone this repository from your terminal
