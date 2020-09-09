@@ -28,5 +28,5 @@ This application is for pet lovers who want to make artwork from their pet photo
 
 3. Start with `npm start`
 
-# Contributing
-Want to help? Great! Checkout the [issue](https://github.com/kgolder92/petraits/issues) tracker and find something you'd like to tackle.
+[//]: # # Contributing
+[//]: # Want to help? Great! Checkout the [issue](https://github.com/kgolder92/petraits/issues) tracker and find something you'd like to tackle.
