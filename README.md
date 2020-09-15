@@ -6,7 +6,7 @@ This application is for pet lovers who want to make artwork from their pet photo
 
 <p align="center">
   <a href="#How it works">How it works</a> •
-  <a href="#installation">Installation</a> •
+  <a href="#installation">Installation</a> 
   <!-- <a href="#contributing">Contributing</a> -->
 </p>
 
