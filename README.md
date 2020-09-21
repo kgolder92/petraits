@@ -2,7 +2,7 @@
   <img src="https://i.imgur.com/8tZXVi4.png" alt="petraits" width="550">
 </h1>
 Animal art for pet parents. 
-This application is for pet lovers who want to make artwork from their pet photos
+This application is for pet lovers who want to make artwork from their pets photos
 
 <p align="center">
   <a href="#How it works">How it works</a> •
