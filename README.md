@@ -8,6 +8,7 @@ This application is for pet lovers who want to make artwork from their pets phot
   <a href="#How it works">How it works</a> •
   <a href="#installation">Installation</a> 
   <!-- <a href="#contributing">Contributing</a> -->
+  <!-- contact -->
 </p>
 
 # How it works
