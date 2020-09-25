@@ -13,7 +13,7 @@ This application is for pet lovers who want to make artwork from their pets phot
 
 # How it works
 ### User
-1. Users will create an account that includes their name, location and the name of their pet 
+1. Users will create an account that includes their name, location[optional] and the name of their pet 
 2. Login to upload a photo of their pet to be recreated as a drawing
 
 ### Admin
