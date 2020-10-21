@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
-const fs = require('fs');
+// const fs = require('fs');
 const db = require('../db');
 
 const app = express();
@@ -68,9 +68,9 @@ app.post('/single', upload.single('image'), (req, res) => {
 });
 
 
-app.post('/orders', upload.single('image'), (req, res) => {
+app.post('/orders', upload.single('photo'), (req, res) => {
   const order = req.body;
-  console.log(req.body)
+  console.log(req.body);
   order.photo = req.file.filename;
   // console.log('file', req.file);
   db.uploadOrder(order, (err, results) => {
