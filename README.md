@@ -27,7 +27,13 @@ This application is for pet lovers who want to make artwork from their pet's pho
 
 2. Install dependencies with `npm install`
 
-3. Start with `npm start`
+3. Create a database in PostgreSQL names `petraits`
+4. Execute the database schema 
+    `$psql -d petraits -U petraits -f schema.sql`
+5. Copy `.env.example` to `.env`
+     `$ cp .env.example .env`
+6. Edit `.env` to reflect your database information
+7. Start with `npm start`
 <!-- seed back end -->
 <!-- # # Contributing 
 # Want to help? Great! Checkout the [issue](https://github.com/kgolder92/petraits/issues) tracker and find something you'd like to tackle.
