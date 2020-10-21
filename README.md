@@ -27,7 +27,7 @@ This application is for pet lovers who want to make artwork from their pet's pho
 
 2. Install dependencies with `npm install`
 
-3. Create a database in PostgreSQL names `petraits`
+3. Create a database in PostgreSQL named `petraits`. These instructions and the .env.example assume a database and user named `petraits`
 4. Execute the database schema 
     `$psql -d petraits -U petraits -f schema.sql`
 5. Copy `.env.example` to `.env`
