@@ -52,11 +52,17 @@ class Form extends React.Component {
   }
 
   handleFileChange({ target }) {
+    // eslint-disable-next-line no-console
     console.log(target.files[0]);
-    this.setState({ photoPreview: URL.createObjectURL(target.files[0]), photo: target.files[0], validForm: true });
+    this.setState({
+      photoPreview: URL.createObjectURL(target.files[0]),
+      photo: target.files[0],
+      validForm: true,
+    });
   }
 
-  handleClick(e) {
+  // eslint-disable-next-line class-methods-use-this
+  handleClick() {
     document.getElementById('hiddenFileInput').click();
   }
 
@@ -74,7 +80,6 @@ class Form extends React.Component {
       petsName,
       notes,
       validForm,
-      photo,
       photoPreview,
     } = this.state;
 
@@ -98,11 +103,12 @@ class Form extends React.Component {
 
               <InputFields name="email" type="email" value={email} placeholder="Enter your email" onChange={this.handleChange} />
 
-              <UploadButton onClick={this.handleClick}>
+              <UploadButton onClick={this.handleClick} type="button">
                 Upload a file
                 <UploadIcon />
               </UploadButton>
-              <InputFields type="file" id="hiddenFileInput" name="image" style={{ display: 'none' }} onChange={this.handleFileChange} />
+              {/* input name was image instead of photo */}
+              <InputFields type="file" id="hiddenFileInput" name="photo" style={{ display: 'none' }} onChange={this.handleFileChange} />
               <ImagePreview src={photoPreview} style={{ borderRadius: '5px' }} />
 
               <InputFields name="notes" value={notes} placeholder="Notes" onChange={this.handleChange} style={{ height: '10vh' }} />

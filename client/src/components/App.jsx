@@ -47,8 +47,16 @@ class App extends React.Component {
   }
 
   submitForm(info) {
-    console.log('helo');
-    axios.post('/orders', info)
+    const formData = new FormData();
+    Object.entries(info).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    console.log(formData);
+    axios.post('/orders', formData, {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    })
       .then(() => this.getPhotos)
       .catch((err) => console.log(err));
   }
@@ -61,6 +69,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { gallery } = this.state;
     return (
       <Router>
         <Container>
@@ -89,7 +98,7 @@ class App extends React.Component {
               <Form submitForm={this.submitForm} />
             </Route>
             <Route path="/gallery">
-              <Gallery gallery={this.state.gallery} />
+              <Gallery gallery={gallery} />
             </Route>
             <Route path="/admin">
               <Admin submitCompletedPhoto={this.submitCompletedPhoto} />
